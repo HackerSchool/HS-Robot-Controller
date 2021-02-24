@@ -3,6 +3,8 @@ project(HSRobot)
 
 set(SOURCES
 	"src/main.c"
+	"src/robot.h"
+	"src/wb_robot.c"
 )
 
 find_package(OpenCV REQUIRED)
