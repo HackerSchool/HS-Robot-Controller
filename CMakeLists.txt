@@ -8,6 +8,8 @@ set(SOURCES
 	"src/robot.hpp"
 	"src/line.hpp"
 	"src/line.cpp"
+	"src/joystick.hpp"
+	"src/joystick.cpp"
 )
 
 if(USE_WEBOTS)

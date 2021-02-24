@@ -14,9 +14,9 @@ enum {
 struct Robot;
 
 // Initializes the robot and returns the handle used
-Robot* robot_init(void);
+Robot* robot_init();
 
-// Terminates the robot using the handle returned by init_robot()
+// Terminates the robot using the handle returned by robot_init()
 void robot_terminate(Robot* robot);
 
 // Updates the distances array and sets the motor info from the input variables

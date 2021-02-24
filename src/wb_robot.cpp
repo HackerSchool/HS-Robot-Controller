@@ -1,6 +1,6 @@
 #include "robot.hpp"
 
-// robot.h implementation using WeBots
+// robot.hpp implementation for WeBots
 
 #define TIME_STEP 64
 #define VELOCITY 3.0
@@ -40,7 +40,7 @@ struct Robot {
     double distances[DS_COUNT];       // Distances last measured by the sensors
 };
 
-Robot* robot_init(void) {
+Robot* robot_init() {
     Robot* robot = new Robot();
 
     // Initialize WeBots and get device tags
