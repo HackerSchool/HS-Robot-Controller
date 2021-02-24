@@ -7,6 +7,8 @@ struct Maze {
 Maze* maze_init() {
     Maze* maze = new Maze();
 
+    // TODO: initialize maze algorithm
+
     return maze;
 }
 
