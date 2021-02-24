@@ -1,4 +1,4 @@
-#include "robot.h"
+#include "robot.hpp"
 
 // robot.h implementation using WeBots
 
@@ -7,8 +7,9 @@
 
 #include <malloc.h>
 
-#include <webots/motor.h>
 #include <webots/robot.h>
+#include <webots/camera.h>
+#include <webots/motor.h>
 #include <webots/distance_sensor.h>
 
 enum {
@@ -31,22 +32,21 @@ enum {
     SERVO_COUNT,
 };
 
-struct robot {
+struct Robot {
+    WbDeviceTag camera;
     WbDeviceTag motors[MOTOR_COUNT];
     WbDeviceTag servos[SERVO_COUNT];
     WbDeviceTag ds[DS_COUNT];        // Distance sensors
     double distances[DS_COUNT];       // Distances last measured by the sensors
 };
 
-struct robot* robot_init(void) {
-    struct robot* robot = malloc(sizeof(struct robot));
-    if (robot == NULL) {
-        perror("Robot struct allocation failed");
-        return NULL;
-    }
+Robot* robot_init(void) {
+    Robot* robot = new Robot();
 
     // Initialize WeBots and get device tags
     wb_robot_init();
+
+    robot->camera = wb_robot_get_device("camera");
 
     robot->servos[SERVO_WHEEL_1] = wb_robot_get_device("wheel1servo");
     robot->servos[SERVO_WHEEL_2] = wb_robot_get_device("wheel2servo");
@@ -65,6 +65,9 @@ struct robot* robot_init(void) {
     robot->ds[DS_RIGHT] = wb_robot_get_device("ds_right");
     robot->ds[DS_RIGHT_FRONT] = wb_robot_get_device("ds_right_front");
 
+    // Enable camera
+    wb_camera_enable(robot->camera, TIME_STEP);
+
     // Initialize motors
     for (int i = 0; i < MOTOR_COUNT; ++i) {
         wb_motor_set_position(robot->motors[i], INFINITY);
@@ -81,13 +84,13 @@ struct robot* robot_init(void) {
     return robot;
 }
 
-void robot_terminate(struct robot* robot) {
+void robot_terminate(Robot* robot) {
     printf("WeBots Robot terminated\n");
-    free(robot);
+    delete robot;
     wb_robot_cleanup();
 }
 
-int robot_update(struct robot* robot, double x, double y) {
+int robot_update(Robot* robot, double x, double y) {
     int ret = wb_robot_step(TIME_STEP);
     if (ret == -1) {
         return -1;
@@ -151,6 +154,13 @@ int robot_update(struct robot* robot, double x, double y) {
     return 0;
 }
 
-double* robot_get_distances(struct robot* robot) {
+double* robot_get_distances(Robot* robot) {
     return robot->distances;
+}
+
+cv::Mat robot_get_image(Robot* robot) {
+    int width = wb_camera_get_width(robot->camera);
+    int height = wb_camera_get_height(robot->camera);
+    const unsigned char* buf = wb_camera_get_image(robot->camera);
+    return cv::Mat(height, width, CV_8UC4, (unsigned char*)buf);
 }
