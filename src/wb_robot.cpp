@@ -29,6 +29,7 @@ enum {
     SERVO_WHEEL_4,
     SERVO_WHEEL_5,
     SERVO_WHEEL_6,
+    SERVO_CAMARA,
     SERVO_COUNT,
 };
 
@@ -52,6 +53,7 @@ Robot* robot_init() {
     robot->servos[SERVO_WHEEL_2] = wb_robot_get_device("wheel2servo");
     robot->servos[SERVO_WHEEL_5] = wb_robot_get_device("wheel5servo");
     robot->servos[SERVO_WHEEL_6] = wb_robot_get_device("wheel6servo");
+    robot->servos[SERVO_CAMARA] = wb_robot_get_device("SERVO_CAMARA");
 
     robot->motors[MOTOR_WHEEL_1] = wb_robot_get_device("wheel1");
     robot->motors[MOTOR_WHEEL_2] = wb_robot_get_device("wheel2");
@@ -90,7 +92,7 @@ void robot_terminate(Robot* robot) {
     wb_robot_cleanup();
 }
 
-int robot_update(Robot* robot, double x, double y) {
+int robot_update(Robot* robot, double x, double y, double z) {
     int ret = wb_robot_step(TIME_STEP);
     if (ret == -1) {
         return -1;
@@ -146,9 +148,23 @@ int robot_update(Robot* robot, double x, double y) {
         wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_5], y * VELOCITY);
         wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_6], y * VELOCITY);
     }
+
     else {
         // Mixed
         perror("Unsupported input, only axis aligned movement is supported");
+    }
+
+    if (fabs(z) == 0.001) {
+        //Rotate camera to left
+        wb_motor_set_position(robot->servos[SERVO_CAMARA], +0.87);
+    }
+    else if (fabs(z) == 0) {
+        //Rotate camera to center
+        wb_motor_set_position(robot->servos[SERVO_CAMARA], 0.0);
+    }
+    else if (fabs(z) == 0.002) {
+        //Rotate camera to right
+        wb_motor_set_position(robot->servos[SERVO_CAMARA], -0.87);
     }
 
     return 0;

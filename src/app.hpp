@@ -25,6 +25,6 @@ int app_get_mode(App* app);
 
 // Reads the app joystick input and outputs the move_x & move_y that should be
 // passed to robot_update.
-void app_read_joystick(App* app, double* move_x, double* move_y);
+void app_read_joystick(App* app, double* move_x, double* move_y, double* move_z);
 
 #endif

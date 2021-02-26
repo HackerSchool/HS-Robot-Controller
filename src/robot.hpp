@@ -26,7 +26,7 @@ void robot_terminate(Robot* robot);
 // y - translation, -1 means move back, 1 means move forward, 0 means no
 // movement.
 // Returns -1 if the program should stop.
-int robot_update(Robot* robot, double x, double y);
+int robot_update(Robot* robot, double x, double y, double z);
 
 // Returns a pointer to an array with the distances measured by the distance
 // sensors (array with DS_COUNT elements).

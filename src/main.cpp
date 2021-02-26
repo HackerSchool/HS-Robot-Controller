@@ -31,9 +31,9 @@ int main(int argc, char** argv) {
         }
     }
 
-    double move_x = 0.0, move_y = 0.0;
+    double move_x = 0.0, move_y = 0.0, move_z = 0.0;
     
-    while (robot_update(robot, move_x, move_y) != -1) {
+    while (robot_update(robot, move_x, move_y, move_z) != -1) {
         // Get camera image and show it
         cv::Mat img = robot_get_image(robot);
         cv::imshow("Camera", img);
@@ -59,7 +59,7 @@ int main(int argc, char** argv) {
         switch (mode) {
         case MODE_JOYSTICK:
             // Update movement using joystick
-            app_read_joystick(app, &move_x, &move_y);
+            app_read_joystick(app, &move_x, &move_y, &move_z);
             break;
 
         case MODE_LINE:

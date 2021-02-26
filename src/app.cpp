@@ -8,6 +8,7 @@
 struct App {
     int mode;
     double joystick_x, joystick_y;
+    double camera_z;
 };
 
 App* app_init() {
@@ -66,6 +67,24 @@ bool app_update(App* app) {
         app->joystick_y = -1.0;
         break;
 
+    case 'P':
+        app->joystick_x = 0.0;
+        app->joystick_y = 0.0;
+        break;
+
+    // Camera movement keys:
+    case 'U':
+        app->camera_z = 0.001;
+        break;
+
+    case 'I':
+        app->camera_z = 0.0;
+        break;
+
+    case 'O':
+        app->camera_z = 0.002;
+        break;
+
     // Mode change keys:
     case 'J':
         app->mode = MODE_JOYSTICK;
@@ -73,10 +92,14 @@ bool app_update(App* app) {
         break;
     case 'L':
         app->mode = MODE_LINE;
+        app->joystick_x = 0.0;
+        app->joystick_y = 0.0;
         changed_mode = true;
         break;
     case 'M':
         app->mode = MODE_MAZE;
+        app->joystick_x = 0.0;
+        app->joystick_y = 0.0;
         changed_mode = true;
         break;
     }
@@ -89,7 +112,8 @@ int app_get_mode(App* app) {
     return app->mode;
 }
 
-void app_read_joystick(App* app, double* move_x, double* move_y) {
+void app_read_joystick(App* app, double* move_x, double* move_y, double* move_z) {
     *move_x = app->joystick_x;
     *move_y = app->joystick_y;
+    *move_z = app->camera_z;
 }
