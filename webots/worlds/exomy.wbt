@@ -1,0 +1,689 @@
+#VRML_SIM R2021b utf8
+WorldInfo {
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation -0.037028742247403816 0.9738536548228526 0.2241381967352898 2.774781069452523
+  position 0.761387549784561 1.2368788517174647 -3.43616069366205
+  follow "rectangle arena"
+}
+TexturedBackgroundLight {
+  castShadows FALSE
+}
+TexturedBackground {
+}
+RectangleArena {
+  floorSize 10 10
+  wallHeight 0.8
+}
+Robot {
+  translation -0.569963 0.155249 -0.63462
+  rotation 0.00025578798891818833 0.9999999566757952 0.00014567399368878978 1.57081
+  children [
+    DEF BODY Shape {
+      appearance PBRAppearance {
+        baseColor 0.917647 0.145098 0.145098
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.14 0.12 0.20554
+      }
+    }
+    DEF UNIon_1 HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.0004942167417540013
+        anchor -0.08 -0.05 0.08
+        minStop -1
+        maxStop 1
+        springConstant 0.005
+        suspensionAxis 0 1 0
+      }
+      endPoint DEF Wheel_Union_1 Solid {
+        translation -0.0800046721154834 -0.04994621228609835 0.08000188651280842
+        rotation 0.9998962320793421 -0.006251228696544665 -0.012978721559461179 0.0004529428304492287
+        children [
+          DEF Wheel_Support_1 Solid {
+            translation 0.01 -0.04 0.07
+            children [
+              DEF Wheel1 Hinge2Joint {
+                jointParameters HingeJointParameters {
+                  position 4.79618004112139e-12
+                  axis 0 1 0
+                  anchor -0.042 -0.0217 0
+                }
+                jointParameters2 JointParameters {
+                  position 0.6402384567017128
+                  axis 1 0 0
+                }
+                device [
+                  RotationalMotor {
+                    name "wheel1servo"
+                    minPosition -1.57
+                    maxPosition 1.57
+                  }
+                ]
+                device2 [
+                  RotationalMotor {
+                    name "wheel1"
+                  }
+                ]
+                endPoint Solid {
+                  translation -0.042 -0.0217 0
+                  rotation 0.6896317134689578 0.6895514875975566 0.22119413583968792 3.577080211263553
+                  children [
+                    DEF WHEEL Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.305882 0.898039 0.25098
+                        roughness 1
+                        metalness 0
+                      }
+                      geometry Cylinder {
+                        height 0.048
+                        radius 0.045
+                        subdivision 24
+                      }
+                    }
+                  ]
+                  name "solid(1)"
+                  boundingObject USE WHEEL
+                  physics Physics {
+                  }
+                }
+              }
+              DEF Wheel_Support_2 Shape {
+                appearance PBRAppearance {
+                }
+                geometry DEF Wheel_Support Box {
+                  size 0.037 0.05751 0.025
+                }
+              }
+            ]
+            name "Wheel_Support_1"
+            boundingObject USE Wheel_Support
+            physics Physics {
+            }
+          }
+          DEF Wheel_Support_3 Solid {
+            translation 0.01 -0.039999999999999994 -0.07
+            rotation 0 -1 0 0.0224452
+            children [
+              DEF Wheel3 Hinge2Joint {
+                jointParameters HingeJointParameters {
+                  position 4.793332397667884e-12
+                  axis 0 1 0
+                  anchor -0.042 -0.0217 0
+                }
+                jointParameters2 JointParameters {
+                  position 0.6400451577777267
+                  axis 1 0 0
+                }
+                device [
+                  RotationalMotor {
+                    name "wheel3servo"
+                    minPosition -1.57
+                    maxPosition 1.57
+                  }
+                ]
+                device2 [
+                  RotationalMotor {
+                    name "wheel3"
+                  }
+                ]
+                endPoint Solid {
+                  translation -0.042 -0.0217 0
+                  rotation 0.6896429253933516 0.6895626951545971 0.2211242295770149 3.576946905111707
+                  children [
+                    DEF WHEEL Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.305882 0.898039 0.25098
+                        roughness 1
+                        metalness 0
+                      }
+                      geometry Cylinder {
+                        height 0.048
+                        radius 0.045
+                        subdivision 24
+                      }
+                    }
+                  ]
+                  name "solid(1)"
+                  boundingObject USE WHEEL
+                  physics Physics {
+                  }
+                }
+              }
+              DEF Wheel_Support_2 Shape {
+                appearance PBRAppearance {
+                }
+                geometry DEF Wheel_Support Box {
+                  size 0.037 0.05751 0.025
+                }
+              }
+            ]
+            name "Wheel_Support_3"
+            boundingObject USE Wheel_Support
+            physics Physics {
+            }
+          }
+          DEF Wheel_Union Shape {
+            appearance Plastic {
+            }
+            geometry Box {
+              size 0.058 0.02539 0.185
+            }
+          }
+        ]
+        name "Wheel_Union(1)"
+        boundingObject USE Wheel_Union
+        physics Physics {
+        }
+      }
+    }
+    DEF UNIon_2 HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.00040878508320107775
+        anchor -0.08 -0.05 0.08
+        minStop -1
+        maxStop 1
+        springConstant 0.005
+        suspensionAxis 0 1 0
+      }
+      endPoint DEF Wheel_Union_2 Solid {
+        translation 0.0799999868863356 -0.0499713615183904 0.08000017665035558
+        rotation 0.999762430869006 0.014027549471099375 0.016682616063801555 0.00037839207451571377
+        children [
+          DEF Wheel_Support_2 Solid {
+            translation -0.01 -0.04 0.0700002
+            rotation 0 -1 0 3.1415853071795863
+            children [
+              DEF Wheel2 Hinge2Joint {
+                jointParameters HingeJointParameters {
+                  position 4.77265534510235e-12
+                  axis 0 1 0
+                  anchor -0.042 -0.0217 0
+                }
+                jointParameters2 JointParameters {
+                  position 0.6402459255018211
+                  axis -1 0 0
+                }
+                device [
+                  RotationalMotor {
+                    name "wheel2servo"
+                    minPosition -1.57
+                    maxPosition 1.57
+                  }
+                ]
+                device2 [
+                  RotationalMotor {
+                    name "wheel2"
+                  }
+                ]
+                endPoint Solid {
+                  translation -0.042 -0.0217 0
+                  rotation 0.6873098690944687 0.6872109227262544 -0.23525792554359162 2.6794763540880315
+                  children [
+                    DEF WHEEL Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.305882 0.898039 0.25098
+                        roughness 1
+                        metalness 0
+                      }
+                      geometry Cylinder {
+                        height 0.048
+                        radius 0.045
+                        subdivision 24
+                      }
+                    }
+                  ]
+                  name "solid(1)"
+                  boundingObject USE WHEEL
+                  physics Physics {
+                  }
+                }
+              }
+              DEF Wheel_Support_2 Shape {
+                appearance PBRAppearance {
+                }
+                geometry DEF Wheel_Support Box {
+                  size 0.037 0.05751 0.025
+                }
+              }
+            ]
+            name "Wheel_Support_2(1)"
+            boundingObject USE Wheel_Support
+            physics Physics {
+            }
+          }
+          DEF Wheel_Support_4 Solid {
+            translation -0.01 -0.04 -0.07
+            rotation 0 1 0 3.14159
+            children [
+              DEF Wheel4 Hinge2Joint {
+                jointParameters HingeJointParameters {
+                  position 4.7737945053135536e-12
+                  axis 0 1 0
+                  anchor -0.042 -0.0217 0
+                }
+                jointParameters2 JointParameters {
+                  position 0.6400532430799417
+                  axis -1 0 0
+                }
+                device [
+                  RotationalMotor {
+                    name "wheel4servo"
+                    minPosition -1.57
+                    maxPosition 1.57
+                  }
+                ]
+                device2 [
+                  RotationalMotor {
+                    name "wheel4"
+                  }
+                ]
+                endPoint Solid {
+                  translation -0.042 -0.0217 0
+                  rotation 0.6873218254157226 0.6872228804085307 -0.23518805443772245 2.679608787770143
+                  children [
+                    DEF WHEEL Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.305882 0.898039 0.25098
+                        roughness 1
+                        metalness 0
+                      }
+                      geometry Cylinder {
+                        height 0.048
+                        radius 0.045
+                        subdivision 24
+                      }
+                    }
+                  ]
+                  name "solid(1)"
+                  boundingObject USE WHEEL
+                  physics Physics {
+                  }
+                }
+              }
+              DEF Wheel_Support_2 Shape {
+                appearance PBRAppearance {
+                }
+                geometry DEF Wheel_Support Box {
+                  size 0.037 0.05751 0.025
+                }
+              }
+            ]
+            name "Wheel_Support_2(2)"
+            boundingObject USE Wheel_Support
+            physics Physics {
+            }
+          }
+          DEF Wheel_Union Shape {
+            appearance Plastic {
+            }
+            geometry Box {
+              size 0.058 0.02539 0.185
+            }
+          }
+        ]
+        name "Wheel_Union(2)"
+        boundingObject USE Wheel_Union
+        physics Physics {
+        }
+      }
+    }
+    DEF UNIon_3 HingeJoint {
+      jointParameters HingeJointParameters {
+        position -0.0001338304034451122
+        axis 0 0 1
+        anchor 0 -0.05 -0.15
+        minStop -1
+        maxStop 1
+        springConstant 0.005
+        suspensionAxis 0 1 0
+      }
+      endPoint DEF Wheel_Union_3 Solid {
+        translation 3.1031183545274813e-07 -0.04997658156422138 -0.09999991984752796
+        rotation -6.64979537496031e-05 -0.9999999955188468 -6.738196182736275e-05 1.5707900054438182
+        children [
+          DEF Wheel_Support_6 Solid {
+            translation -0.03 -0.04 -0.07
+            rotation 0 -1 0 1.5708
+            children [
+              DEF Wheel6 Hinge2Joint {
+                jointParameters HingeJointParameters {
+                  position 5.267802990775773e-12
+                  axis 0 1 0
+                  anchor -0.042 -0.0217 0
+                }
+                jointParameters2 JointParameters {
+                  position 0.6397061658611674
+                  axis -1 0 0
+                }
+                device [
+                  RotationalMotor {
+                    name "wheel6servo"
+                    minPosition -1.57
+                    maxPosition 1.57
+                  }
+                ]
+                device2 [
+                  RotationalMotor {
+                    name "wheel6"
+                  }
+                ]
+                endPoint Solid {
+                  translation -0.04200150422472323 -0.02169679149090691 -5.193021711860528e-06
+                  rotation 0.2456123815287639 -0.24561729126699808 -0.9377348795210891 4.648289900596092
+                  children [
+                    DEF WHEEL Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.305882 0.898039 0.25098
+                        roughness 1
+                        metalness 0
+                      }
+                      geometry Cylinder {
+                        height 0.048
+                        radius 0.045
+                        subdivision 24
+                      }
+                    }
+                  ]
+                  name "solid(1)"
+                  boundingObject USE WHEEL
+                  physics Physics {
+                  }
+                }
+              }
+              DEF Wheel_Support_6 Shape {
+                appearance PBRAppearance {
+                }
+                geometry DEF Wheel_Support Box {
+                  size 0.037 0.05751 0.025
+                }
+              }
+            ]
+            name "Wheel_Support_6"
+            boundingObject USE Wheel_Support
+            physics Physics {
+            }
+          }
+          DEF Wheel_Support_5 Solid {
+            translation -0.03 -0.04 0.07
+            rotation 0 1 0 1.5708
+            children [
+              DEF Wheel5 Hinge2Joint {
+                jointParameters HingeJointParameters {
+                  position 4.7334543642654065e-12
+                  axis 0 1 0
+                  anchor -0.042 -0.0217 0
+                }
+                jointParameters2 JointParameters {
+                  position 0.6397115519842612
+                  axis 1 0 0
+                }
+                device [
+                  RotationalMotor {
+                    name "wheel5servo"
+                    minPosition -1.57
+                    maxPosition 1.57
+                  }
+                ]
+                device2 [
+                  RotationalMotor {
+                    name "wheel5"
+                  }
+                ]
+                endPoint Solid {
+                  translation -0.042 -0.0217 0
+                  rotation 0.6896622664299492 0.689582028655071 0.2210035837235741 3.5767168330098675
+                  children [
+                    DEF WHEEL Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.305882 0.898039 0.25098
+                        roughness 1
+                        metalness 0
+                      }
+                      geometry Cylinder {
+                        height 0.048
+                        radius 0.045
+                        subdivision 24
+                      }
+                    }
+                  ]
+                  name "solid(1)"
+                  boundingObject USE WHEEL
+                  physics Physics {
+                  }
+                }
+              }
+              DEF Wheel_Support_5 Shape {
+                appearance PBRAppearance {
+                }
+                geometry DEF Wheel_Support Box {
+                  size 0.037 0.05751 0.025
+                }
+              }
+            ]
+            name "Wheel_Support_5"
+            boundingObject USE Wheel_Support
+            physics Physics {
+            }
+          }
+          DEF Wheel_Union Shape {
+            appearance Plastic {
+            }
+            geometry Box {
+              size 0.098 0.02539 0.23256
+            }
+          }
+        ]
+        name "Wheel_Union(3)"
+        boundingObject USE Wheel_Union
+        physics Physics {
+        }
+      }
+    }
+    DEF Camara HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 0 0.0989996 0.0558117
+      }
+      device [
+        RotationalMotor {
+          name "SERVO_CAMARA"
+          minPosition -1.57
+          maxPosition 1.57
+        }
+      ]
+      endPoint Solid {
+        translation 0 0.0989996 0.0558117
+        rotation -1 0 0 5.307156870259904e-06
+        children [
+          DEF camara Shape {
+            appearance Appearance {
+              material Material {
+              }
+            }
+            geometry Box {
+              size 0.06 0.07825 0.06
+            }
+          }
+          Camera {
+            translation 0 0 0.02
+            rotation 0 0.982012480556961 0.18881601635021425 -3.010695613280012
+            fieldOfView 1.09
+            width 1080
+            height 920
+            focus Focus {
+            }
+            recognition Recognition {
+            }
+          }
+        ]
+        name "solid(1)"
+      }
+    }
+    DEF DS_RIGHT_FRONT DistanceSensor {
+      translation -0.0400016 0.0298727 0.110129
+      rotation -0.5773503075399135 -0.5773501924890427 -0.5773503075399135 2.11659
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.184314 0.596078 0.847059
+            roughness 1
+            metalness 0
+          }
+          geometry DEF Sensor Box {
+            size 0.01454 0.0477 0.0223
+          }
+        }
+      ]
+      name "ds_right_front"
+      lookupTable [
+        0 0 0
+        4 400 0
+      ]
+      aperture 0.261799
+    }
+    DEF DS_LEFT_FRONT DistanceSensor {
+      translation 0.0404963 0.0296115 0.109113
+      rotation -0.5773502691896258 -0.5773502691896258 -0.5773502691896258 2.11659
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.184314 0.596078 0.847059
+            roughness 1
+            metalness 0
+          }
+          geometry USE Sensor
+        }
+      ]
+      name "ds_left_front"
+      lookupTable [
+        0 0 0
+        4 400 0
+      ]
+      aperture 0.261799
+    }
+    DEF DS_LEFT DistanceSensor {
+      translation 0.0585844 0.0452003 -0.0300004
+      rotation -0.9831059489296136 0.1294259932765787 -0.12942799327647478 1.58784
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.184314 0.596078 0.847059
+            roughness 1
+            metalness 0
+          }
+          geometry USE Sensor
+        }
+      ]
+      name "ds_left"
+      lookupTable [
+        0 0 0
+        4 400 0
+      ]
+      aperture 0.261799
+    }
+    DEF DS_RIGHT DistanceSensor {
+      translation -0.0585844 0.0451999 -0.0299994
+      rotation -0.09269171116648352 0.704062084817699 0.7040630848178195 -2.9567453071795864
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.184314 0.596078 0.847059
+            roughness 1
+            metalness 0
+          }
+          geometry USE Sensor
+        }
+      ]
+      name "ds_right"
+      lookupTable [
+        0 0 0
+        4 400 0
+      ]
+      aperture 0.261799
+    }
+  ]
+  boundingObject USE BODY
+  physics Physics {
+    density -1
+    mass 1
+  }
+  controller "<extern>"
+  controllerArgs [
+    ""
+  ]
+}
+Rock10cm {
+  translation 0.11268 0 -2.19
+  rotation 0 -1 0 2.0944
+}
+Wall {
+  translation 0.53602 0.52 -4.93381
+  rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.09439
+  size 1 1 0.1
+}
+Wall {
+  translation -0.22397 0.52 -3.56381
+  rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.09439
+  name "wall(1)"
+  size 1 1 0.1
+}
+Wall {
+  translation -0.22397 0.52 -4.53381
+  rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.09439
+  name "wall(2)"
+  size 1 1 0.1
+}
+Wall {
+  translation -0.22397 0.52 -5.21381
+  rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.09439
+  name "wall(3)"
+  size 1 1 0.1
+}
+Solid {
+  translation 0.27629160378091605 0.05736314384745942 -2.9142397562141302
+  rotation -1.182957569918205e-12 0.9999999999999999 -3.761209855411828e-12 -0.00033943255752795195
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "textures/can_base_color.jpg"
+          ]
+        }
+        roughness 0.2
+        roughnessMap ImageTexture {
+          url [
+            "textures/can_roughness.jpg"
+          ]
+        }
+        metalness 0.8
+      }
+      geometry Cylinder {
+        height 0.115
+        radius 0.033
+        subdivision 20
+      }
+    }
+  ]
+  name "can"
+  model "can"
+  boundingObject Cylinder {
+    height 0.115
+    radius 0.033
+    subdivision 20
+  }
+  physics Physics {
+    density -1
+    mass 0.35
+  }
+  recognitionColors [
+    0.666667 0 0
+  ]
+}
+TrackOne {
+  translation -0.11 -0.007 -0.81
+}

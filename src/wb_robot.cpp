@@ -6,6 +6,7 @@
 #define VELOCITY 3.0
 
 #include <malloc.h>
+#include <cmath>
 
 #include <webots/robot.h>
 #include <webots/camera.h>
@@ -103,7 +104,9 @@ int robot_update(Robot* robot, double x, double y, double z) {
         robot->distances[i] = wb_distance_sensor_get_value(robot->ds[i]);
     }
 
-    if (fabs(x) < 0.001 && fabs(y) < 0.001) {
+    // Get movement vector
+    double speed = sqrt(x * x + y * y);
+    if (speed < 0.05) {
         // Stop robot
         wb_motor_set_position(robot->servos[SERVO_WHEEL_1], 0.0);
         wb_motor_set_position(robot->servos[SERVO_WHEEL_2], 0.0);
@@ -118,40 +121,47 @@ int robot_update(Robot* robot, double x, double y, double z) {
         wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_5], 0.0);
         wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_6], 0.0);
     }
-    else if (fabs(x) > 0.001 && fabs(y) < 0.001) {
-        // Rotate without moving
-        wb_motor_set_position(robot->servos[SERVO_WHEEL_1], +0.87);
-        wb_motor_set_position(robot->servos[SERVO_WHEEL_2], -0.87);
-        wb_motor_set_position(robot->servos[SERVO_WHEEL_5], -0.87);
-        wb_motor_set_position(robot->servos[SERVO_WHEEL_6], +0.87);
-        wb_motor_set_available_torque(robot->motors[SERVO_WHEEL_3], 0.0);
-        wb_motor_set_available_torque(robot->motors[SERVO_WHEEL_4], 0.0);
-        wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_1], -x * VELOCITY);
-        wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_2], +x * VELOCITY);
-        wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_3], -x * VELOCITY);
-        wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_4], +x * VELOCITY);
-        wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_5], -x * VELOCITY);
-        wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_6], +x * VELOCITY);
-    }
-    else if (fabs(x) < 0.001 && fabs(y) > 0.001) {
-        // Go straight forward/backwards
-        wb_motor_set_position(robot->servos[SERVO_WHEEL_1], 0.0);
-        wb_motor_set_position(robot->servos[SERVO_WHEEL_2], 0.0);
-        wb_motor_set_position(robot->servos[SERVO_WHEEL_5], 0.0);
-        wb_motor_set_position(robot->servos[SERVO_WHEEL_6], 0.0);
-        wb_motor_set_available_torque(robot->motors[MOTOR_WHEEL_3], 2.0);
-        wb_motor_set_available_torque(robot->motors[MOTOR_WHEEL_4], 2.0);
-        wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_1], y * VELOCITY);
-        wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_2], y * VELOCITY);
-        wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_3], y * VELOCITY);
-        wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_4], y * VELOCITY);
-        wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_5], y * VELOCITY);
-        wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_6], y * VELOCITY);
-    }
-
     else {
-        // Mixed
-        perror("Unsupported input, only axis aligned movement is supported");
+        // Normalize movement vector
+        x /= speed;
+        y /= speed;
+        double x_sign = x > 0.0 ? 1.0 : (x < 0.0 ? -1.0 : 0.0);
+        double y_sign = y > 0.0 ? 1.0 : (y < 0.0 ? -1.0 : 0.0);
+
+        // Rotate only
+        if (y < 0.2) {
+            // Rotate without moving
+            wb_motor_set_position(robot->servos[SERVO_WHEEL_1], +0.87);
+            wb_motor_set_position(robot->servos[SERVO_WHEEL_2], -0.87);
+            wb_motor_set_position(robot->servos[SERVO_WHEEL_5], -0.87);
+            wb_motor_set_position(robot->servos[SERVO_WHEEL_6], +0.87);
+            wb_motor_set_available_torque(robot->motors[SERVO_WHEEL_3], 0.0);
+            wb_motor_set_available_torque(robot->motors[SERVO_WHEEL_4], 0.0);
+            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_1], +speed * VELOCITY);
+            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_2], -speed * VELOCITY);
+            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_3], +speed * VELOCITY);
+            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_4], -speed * VELOCITY);
+            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_5], +speed * VELOCITY);
+            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_6], -speed * VELOCITY);
+        }
+        // Rotate and move at the same time
+        else {
+            // Set wheel angles
+            wb_motor_set_position(robot->servos[SERVO_WHEEL_1], -x * 0.87);
+            wb_motor_set_position(robot->servos[SERVO_WHEEL_2], -x * 0.87);
+            wb_motor_set_position(robot->servos[SERVO_WHEEL_5], x * 0.87);
+            wb_motor_set_position(robot->servos[SERVO_WHEEL_6], x * 0.87);
+
+            // Set speed
+            wb_motor_set_available_torque(robot->motors[MOTOR_WHEEL_3], 0.0);
+            wb_motor_set_available_torque(robot->motors[MOTOR_WHEEL_4], 0.0);
+            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_1], speed * VELOCITY);
+            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_2], speed * VELOCITY);
+            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_3], speed * VELOCITY);
+            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_4], speed * VELOCITY);
+            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_5], speed * VELOCITY);
+            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_6], speed * VELOCITY);
+        }
     }
 
     if (fabs(z) == 0.001) {

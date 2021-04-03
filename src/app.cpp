@@ -14,7 +14,7 @@ struct App {
 App* app_init() {
     App* app = new App();
 
-    app->mode = MODE_JOYSTICK;
+    app->mode = MODE_LINE;
     app->joystick_x = 0.0;
     app->joystick_y = 0.0;
 

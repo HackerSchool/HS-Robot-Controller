@@ -63,7 +63,7 @@ int main(int argc, char** argv) {
             break;
 
         case MODE_LINE:
-            line_follow(&img, &move_x, &move_y);
+            line_follow(img, &move_x, &move_y);
             break;
 
         case MODE_MAZE:
