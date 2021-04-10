@@ -3,8 +3,8 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation -0.037028742247403816 0.9738536548228526 0.2241381967352898 2.774781069452523
-  position 0.761387549784561 1.2368788517174647 -3.43616069366205
+  orientation -0.119316052557989 0.9588681208522382 0.25755699644016045 2.4475118913733054
+  position 3.4819957903687806 3.2871552550470566 -4.122211851888621
   follow "rectangle arena"
 }
 TexturedBackgroundLight {
@@ -17,8 +17,8 @@ RectangleArena {
   wallHeight 0.8
 }
 Robot {
-  translation -0.569963 0.155249 -0.63462
-  rotation 0.00025578798891818833 0.9999999566757952 0.00014567399368878978 1.57081
+  translation -1.59993 0.154357 1.85538
+  rotation 5.505779880731878e-05 0.9999999783376521 0.00020073199565167357 -3.141575307179586
   children [
     DEF BODY Shape {
       appearance PBRAppearance {
@@ -41,7 +41,7 @@ Robot {
       }
       endPoint DEF Wheel_Union_1 Solid {
         translation -0.0800046721154834 -0.04994621228609835 0.08000188651280842
-        rotation 0.9998962320793421 -0.006251228696544665 -0.012978721559461179 0.0004529428304492287
+        rotation 0.9998962320832161 -0.0062512285798589995 -0.012978721317199883 0.0004529428304492287
         children [
           DEF Wheel_Support_1 Solid {
             translation 0.01 -0.04 0.07
@@ -191,7 +191,7 @@ Robot {
       }
       endPoint DEF Wheel_Union_2 Solid {
         translation 0.0799999868863356 -0.0499713615183904 0.08000017665035558
-        rotation 0.999762430869006 0.014027549471099375 0.016682616063801555 0.00037839207451571377
+        rotation 0.9997624308690518 0.014027549469739239 0.01668261606218398 0.00037839207451571377
         children [
           DEF Wheel_Support_2 Solid {
             translation -0.01 -0.04 0.0700002
@@ -342,8 +342,8 @@ Robot {
         suspensionAxis 0 1 0
       }
       endPoint DEF Wheel_Union_3 Solid {
-        translation 3.1031183545274813e-07 -0.04997658156422138 -0.09999991984752796
-        rotation -6.64979537496031e-05 -0.9999999955188468 -6.738196182736275e-05 1.5707900054438182
+        translation 3.103118354527483e-07 -0.04997658156422138 -0.09999991984752796
+        rotation -6.64979537496031e-05 -0.9999999955188468 -6.738196182736276e-05 1.5707900054438182
         children [
           DEF Wheel_Support_6 Solid {
             translation -0.03 -0.04 -0.07
@@ -684,6 +684,21 @@ Solid {
     0.666667 0 0
   ]
 }
-TrackOne {
-  translation -0.11 -0.007 -0.81
+Transform {
+  translation 0 0.0001 0
+  scale 4 4 4
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture {
+          url [
+            "C:/Users/RiscadoA/Programming/hs-robot-controller/webots/textures/track1.png"
+          ]
+        }
+      }
+      geometry Plane {
+      }
+      castShadows FALSE
+    }
+  ]
 }

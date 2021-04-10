@@ -137,12 +137,12 @@ int robot_update(Robot* robot, double x, double y, double z) {
             wb_motor_set_position(robot->servos[SERVO_WHEEL_6], +0.87);
             wb_motor_set_available_torque(robot->motors[SERVO_WHEEL_3], 0.0);
             wb_motor_set_available_torque(robot->motors[SERVO_WHEEL_4], 0.0);
-            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_1], +speed * VELOCITY);
-            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_2], -speed * VELOCITY);
-            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_3], +speed * VELOCITY);
-            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_4], -speed * VELOCITY);
-            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_5], +speed * VELOCITY);
-            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_6], -speed * VELOCITY);
+            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_1], -speed * x_sign * VELOCITY);
+            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_2], +speed * x_sign * VELOCITY);
+            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_3], -speed * x_sign * VELOCITY);
+            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_4], +speed * x_sign * VELOCITY);
+            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_5], -speed * x_sign * VELOCITY);
+            wb_motor_set_velocity(robot->motors[MOTOR_WHEEL_6], +speed * x_sign * VELOCITY);
         }
         // Rotate and move at the same time
         else {
