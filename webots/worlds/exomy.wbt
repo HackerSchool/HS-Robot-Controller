@@ -3,8 +3,8 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation -0.119316052557989 0.9588681208522382 0.25755699644016045 2.4475118913733054
-  position 3.4819957903687806 3.2871552550470566 -4.122211851888621
+  orientation -0.1327845529803414 0.9853173044762477 0.10732228095541145 2.272380780484725
+  position 3.8375738412203555 1.5599327937762304 -3.4709987192294927
   follow "rectangle arena"
 }
 TexturedBackgroundLight {
@@ -17,8 +17,8 @@ RectangleArena {
   wallHeight 0.8
 }
 Robot {
-  translation -1.59993 0.154357 1.85538
-  rotation 5.505779880731878e-05 0.9999999783376521 0.00020073199565167357 -3.141575307179586
+  translation 2.0044 0.18499 -0.710315
+  rotation 5.5058198807308907e-05 0.9999999783376301 0.00020073199565166916 -3.141575307179586
   children [
     DEF BODY Shape {
       appearance PBRAppearance {
@@ -40,8 +40,8 @@ Robot {
         suspensionAxis 0 1 0
       }
       endPoint DEF Wheel_Union_1 Solid {
-        translation -0.0800046721154834 -0.04994621228609835 0.08000188651280842
-        rotation 0.9998962320832161 -0.0062512285798589995 -0.012978721317199883 0.0004529428304492287
+        translation -0.0800046721154834 -0.04994621228609834 0.08000188651280842
+        rotation 0.9998962322689063 -0.00625122298693438 -0.012978709705240893 0.00045294286182372763
         children [
           DEF Wheel_Support_1 Solid {
             translation 0.01 -0.04 0.07
@@ -59,6 +59,7 @@ Robot {
                 device [
                   RotationalMotor {
                     name "wheel1servo"
+                    maxVelocity 100
                     minPosition -1.57
                     maxPosition 1.57
                   }
@@ -66,6 +67,7 @@ Robot {
                 device2 [
                   RotationalMotor {
                     name "wheel1"
+                    maxVelocity 100
                   }
                 ]
                 endPoint Solid {
@@ -121,6 +123,7 @@ Robot {
                 device [
                   RotationalMotor {
                     name "wheel3servo"
+                    maxVelocity 100
                     minPosition -1.57
                     maxPosition 1.57
                   }
@@ -128,11 +131,12 @@ Robot {
                 device2 [
                   RotationalMotor {
                     name "wheel3"
+                    maxVelocity 100
                   }
                 ]
                 endPoint Solid {
                   translation -0.042 -0.0217 0
-                  rotation 0.6896429253933516 0.6895626951545971 0.2211242295770149 3.576946905111707
+                  rotation 0.689642925393352 0.6895626951545966 0.22112422957701505 3.5769469051117078
                   children [
                     DEF WHEEL Shape {
                       appearance PBRAppearance {
@@ -190,8 +194,8 @@ Robot {
         suspensionAxis 0 1 0
       }
       endPoint DEF Wheel_Union_2 Solid {
-        translation 0.0799999868863356 -0.0499713615183904 0.08000017665035558
-        rotation 0.9997624308690518 0.014027549469739239 0.01668261606218398 0.00037839207451571377
+        translation 0.0799999868863356 -0.049971361518390406 0.08000017665035558
+        rotation 0.9997624308700387 0.014027549440611997 0.01668261602754368 0.00037839207451571377
         children [
           DEF Wheel_Support_2 Solid {
             translation -0.01 -0.04 0.0700002
@@ -221,7 +225,7 @@ Robot {
                 ]
                 endPoint Solid {
                   translation -0.042 -0.0217 0
-                  rotation 0.6873098690944687 0.6872109227262544 -0.23525792554359162 2.6794763540880315
+                  rotation 0.6873098690944685 0.6872109227262545 -0.23525792554359148 2.679476354088031
                   children [
                     DEF WHEEL Shape {
                       appearance PBRAppearance {
@@ -272,6 +276,7 @@ Robot {
                 device [
                   RotationalMotor {
                     name "wheel4servo"
+                    maxVelocity 100
                     minPosition -1.57
                     maxPosition 1.57
                   }
@@ -283,7 +288,7 @@ Robot {
                 ]
                 endPoint Solid {
                   translation -0.042 -0.0217 0
-                  rotation 0.6873218254157226 0.6872228804085307 -0.23518805443772245 2.679608787770143
+                  rotation 0.6873218254157225 0.687222880408531 -0.2351880544377227 2.6796087877701424
                   children [
                     DEF WHEEL Shape {
                       appearance PBRAppearance {
@@ -342,8 +347,8 @@ Robot {
         suspensionAxis 0 1 0
       }
       endPoint DEF Wheel_Union_3 Solid {
-        translation 3.103118354527483e-07 -0.04997658156422138 -0.09999991984752796
-        rotation -6.64979537496031e-05 -0.9999999955188468 -6.738196182736276e-05 1.5707900054438182
+        translation 3.103118354528453e-07 -0.04997658156422138 -0.09999991984752796
+        rotation -6.649795374958815e-05 -0.9999999955188468 -6.738196182738374e-05 1.5707900054438182
         children [
           DEF Wheel_Support_6 Solid {
             translation -0.03 -0.04 -0.07
@@ -372,8 +377,8 @@ Robot {
                   }
                 ]
                 endPoint Solid {
-                  translation -0.04200150422472323 -0.02169679149090691 -5.193021711860528e-06
-                  rotation 0.2456123815287639 -0.24561729126699808 -0.9377348795210891 4.648289900596092
+                  translation -0.04200150422472323 -0.02169679149090691 -5.1930217118602125e-06
+                  rotation 0.24561238152876463 -0.24561729126699813 -0.9377348795210889 4.648289900596092
                   children [
                     DEF WHEEL Shape {
                       appearance PBRAppearance {
@@ -435,7 +440,7 @@ Robot {
                 ]
                 endPoint Solid {
                   translation -0.042 -0.0217 0
-                  rotation 0.6896622664299492 0.689582028655071 0.2210035837235741 3.5767168330098675
+                  rotation 0.6896622664299491 0.689582028655071 0.22100358372357445 3.576716833009868
                   children [
                     DEF WHEEL Shape {
                       appearance PBRAppearance {

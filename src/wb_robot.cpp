@@ -3,7 +3,7 @@
 // robot.hpp implementation for WeBots
 
 #define TIME_STEP 64
-#define VELOCITY 10.0
+#define VELOCITY 5.0
 
 #include <malloc.h>
 #include <cmath>
