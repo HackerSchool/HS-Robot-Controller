@@ -47,6 +47,10 @@ namespace hs::robot
         /// @return Captured image.
         virtual cv::Mat readCamera() = 0;
 
+        /// Should the controller shut down?
+        /// @return True or false.
+        virtual bool shouldStop() = 0;
+
         /// Updates the robot's motors, servos, sensors and captures a image. Should be called on a loop.
         virtual void update() = 0;
     };

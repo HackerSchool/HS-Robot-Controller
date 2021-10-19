@@ -9,6 +9,11 @@ using namespace hs::robot;
 WebotsRobot::WebotsRobot(int timeStep)
 {
     this->timeStep = timeStep;
+    this->rotation = 0.0;
+    this->translation = 0.0;
+    this->arm[0] = this->arm[1] = this->arm[2] = 0.0;
+    this->cameraAngle = 0.0;
+    this->shouldStopFlag = false;
 
     wb_robot_init();
 
@@ -27,6 +32,10 @@ WebotsRobot::WebotsRobot(int timeStep)
         wb_motor_set_position(this->motors[i], INFINITY);
     for (int i = 0; i < static_cast<int>(Sensor::Count); ++i)
         wb_distance_sensor_enable(this->sensors[i], this->timeStep);
+
+    // Stop robot
+    this->setMotor(Motor::Wheels, 0.0);
+    this->setServo(Servo::Wheels, 0.0);
 
     std::cout << "Webots robot initialized" << std::endl;
 }
@@ -68,6 +77,11 @@ cv::Mat WebotsRobot::readCamera()
     int height = wb_camera_get_height(this->camera);
     const unsigned char* buf = wb_camera_get_image(this->camera);
     return cv::Mat(height, width, CV_8UC4, (unsigned char*)buf);
+}
+
+bool WebotsRobot::shouldStop()
+{
+    return this->shouldStopFlag;
 }
 
 void WebotsRobot::update()
@@ -119,6 +133,10 @@ void WebotsRobot::update()
             wb_motor_set_available_torque(this->motors[static_cast<int>(Motor::WheelLM)], 0.0);
         }
     }
+
+    // Step simulation.
+    if (wb_robot_step(this->timeStep) == -1)
+        this->shouldStopFlag = true;
 }
 
 void WebotsRobot::setMotor(Motor motor, double velocity)
@@ -192,6 +210,11 @@ double WebotsRobot::readSensor(Sensor sensor)
 }
 
 cv::Mat WebotsRobot::readCamera()
+{
+    abort(); // Unsupported operation
+}
+
+bool WebotsRobot::shouldStop()
 {
     abort(); // Unsupported operation
 }

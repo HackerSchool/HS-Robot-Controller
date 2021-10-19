@@ -20,7 +20,7 @@ namespace hs::robot
     class WebotsRobot : public Robot
     {
     public:
-        WebotsRobot(int timeStep);
+        WebotsRobot(int timeStep = 64);
         virtual ~WebotsRobot() override;
 
         // Abstract methods implementation
@@ -29,6 +29,7 @@ namespace hs::robot
         virtual void setCameraAngle(double angle) override;
         virtual double readSensor(Sensor sensor) override;
         virtual cv::Mat readCamera() override;
+        virtual bool shouldStop() override;
         virtual void update() override;
 
     private:
@@ -96,6 +97,7 @@ namespace hs::robot
         static inline const std::map<Servo, const char*> SERVO_TO_DEVICE = {
             {Servo::WheelRF, "wheel1servo"}, {Servo::WheelLF, "wheel2servo"}, {Servo::WheelRM, "wheel3servo"},
             {Servo::WheelLM, "wheel4servo"}, {Servo::WheelRB, "wheel5servo"}, {Servo::WheelLB, "wheel6servo"},
+            {Servo::Camera, "SERVO_CAMARA"},
         };
 
         /// Sensors enum to Webots device name.
@@ -122,10 +124,11 @@ namespace hs::robot
         WbDeviceTag servos[static_cast<int>(Servo::Count)];   ///< Robot servo tags.
         WbDeviceTag sensors[static_cast<int>(Sensor::Count)]; ///< Robot sensor tags.
 
-        float rotation;    ///< Stores last value set by setMovement().
-        float translation; ///< Stores last value set by setMovement().
-        float arm[3];      ///< Stores last value set by setArmPosition().
-        float cameraAngle; ///< Stores last value set by setCameraAngle().
+        float rotation;      ///< Stores last value set by setMovement().
+        float translation;   ///< Stores last value set by setMovement().
+        float arm[3];        ///< Stores last value set by setArmPosition().
+        float cameraAngle;   ///< Stores last value set by setCameraAngle().
+        bool shouldStopFlag; ///< Should the controller shut down?
 
 #endif // USE_WEBOTS
     };

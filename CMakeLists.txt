@@ -6,14 +6,24 @@ option(USE_BLUETOOTH OFF)
 
 set(SOURCES
 	"src/main.cpp"
+
 	"src/robot/robot.hpp"
     "src/robot/webots_robot.hpp"
     "src/robot/webots_robot.cpp"
     "src/robot/hs_robot.hpp"
     "src/robot/hs_robot.cpp"
+
+    "src/behaviour/behaviour.hpp"
+    "src/behaviour/behaviour.cpp"
+    "src/behaviour/manager.hpp"
+    "src/behaviour/manager.cpp"
+
+    "src/app/app.hpp"
+    "src/app/app.cpp"
 )
 
 add_executable(controller ${SOURCES})
+set_property(TARGET controller PROPERTY CXX_STANDARD 17)
 
 # Link OpenCV
 find_package(OpenCV REQUIRED)
