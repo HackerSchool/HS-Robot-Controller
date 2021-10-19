@@ -8,10 +8,10 @@ namespace hs::robot
     /// Enum used to identify sensors.
     enum class Sensor
     {
-        DLeftFront,  ///< Left-front distance sensor.
-        DRightFront, ///< Right-front distance sensor.
-        DLeft,       ///< Left distance sensor.
-        DRight,      ///< Right distance sensor.
+        DistanceRF, ///< Right-front distance sensor.
+        DistanceLF, ///< Left-front distance sensor.
+        DistanceR,  ///< Right distance sensor.
+        DistanceL,  ///< Left distance sensor.
 
         Count ///< Number of sensors.
     };
@@ -23,8 +23,7 @@ namespace hs::robot
         Robot() = default;
         virtual ~Robot() = default;
 
-        /// Sets the robot's movement. The values passed to this function correspond to the
-        /// joystick X and Y axes.
+        /// Sets the robot's movement. The values passed to this function correspond to the joystick X and Y axes.
         /// @param translation Forward (positive) and backwards (negative) movement.
         /// @param rotation    How should the robot turn, left (negative) or right (positive).
         virtual void setMovement(double translation, double rotation) = 0;
@@ -47,6 +46,9 @@ namespace hs::robot
         /// Gets the last image captured by the robot camera.
         /// @return Captured image.
         virtual cv::Mat readCamera() = 0;
+
+        /// Updates the robot's motors, servos, sensors and captures a image. Should be called on a loop.
+        virtual void update() = 0;
     };
 } // namespace hs::robot
 
