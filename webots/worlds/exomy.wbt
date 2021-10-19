@@ -41,7 +41,7 @@ Robot {
       }
       endPoint DEF Wheel_Union_1 Solid {
         translation -0.0800046721154834 -0.04994621228609835 0.08000188651280842
-        rotation 0.9998962320832161 -0.0062512285798589995 -0.012978721317199883 0.0004529428304492287
+        rotation 0.9998962320899765 -0.006251228376239478 -0.012978720894447607 0.0004529428304492287
         children [
           DEF Wheel_Support_1 Solid {
             translation 0.01 -0.04 0.07
@@ -191,7 +191,7 @@ Robot {
       }
       endPoint DEF Wheel_Union_2 Solid {
         translation 0.0799999868863356 -0.0499713615183904 0.08000017665035558
-        rotation 0.9997624308690518 0.014027549469739239 0.01668261606218398 0.00037839207451571377
+        rotation 0.9997624308692866 0.014027549462812367 0.016682616053946026 0.00037839207451571377
         children [
           DEF Wheel_Support_2 Solid {
             translation -0.01 -0.04 0.0700002
@@ -342,8 +342,8 @@ Robot {
         suspensionAxis 0 1 0
       }
       endPoint DEF Wheel_Union_3 Solid {
-        translation 3.103118354527483e-07 -0.04997658156422138 -0.09999991984752796
-        rotation -6.64979537496031e-05 -0.9999999955188468 -6.738196182736276e-05 1.5707900054438182
+        translation 3.103118354527494e-07 -0.04997658156422138 -0.09999991984752796
+        rotation -6.64979537496031e-05 -0.9999999955188468 -6.738196182736286e-05 1.5707900054438182
         children [
           DEF Wheel_Support_6 Solid {
             translation -0.03 -0.04 -0.07
@@ -692,7 +692,7 @@ Transform {
       appearance Appearance {
         texture ImageTexture {
           url [
-            "C:/Users/RiscadoA/Programming/hs-robot-controller/webots/textures/track1.png"
+            "../textures/track1.png"
           ]
         }
       }

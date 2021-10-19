@@ -4,10 +4,12 @@ in { pkgs ? import <nixpkgs> { overlays = [ webots_overlay ]; } }: with pkgs; mk
   opencvGtk = opencv.override (old : { enableGtk2 = true; });
   buildInputs = [
     cmake
+    bluez
     gcc
     pkg-config
     webots
     (opencv.override (old : { enableGtk2 = true; }))
+    clang-tools
   ];
 
   WEBOTS_HOME = "${webots}/local/webots";
