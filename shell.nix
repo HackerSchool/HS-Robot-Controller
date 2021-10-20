@@ -8,6 +8,8 @@ in { pkgs ? import <nixpkgs> { overlays = [ webots_overlay ]; } }: with pkgs; mk
     gcc
     pkg-config
     webots
+    doxygen
+    graphviz
     (opencv.override (old : { enableGtk2 = true; }))
     clang-tools
   ];

@@ -52,3 +52,17 @@ if(USE_BLUETOOTH)
 	target_link_libraries(controller PUBLIC bluetooth)
 	target_compile_definitions(controller PUBLIC USE_BLUETOOTH)
 endif()
+
+# Doxygen documentation
+find_package(Doxygen COMPONENTS dot)
+
+if (Doxygen_FOUND)
+    set(DOXYGEN_SHOW_NAMESPACES YES)
+    set(DOXYGEN_GENERATE_TREEVIEW YES)
+    set(DOXYGEN_JAVADOC_AUTOBRIEF YES)
+    doxygen_add_docs(
+        doxygen
+        "src"
+        COMMENT "Generate documentation"
+    )
+endif()
