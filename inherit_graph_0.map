@@ -1,0 +1,4 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classhs_1_1app_1_1App.html" title="Class used to represent controller user input." alt="" coords="5,5,108,32"/>
+<area shape="rect" id="node2" href="$classhs_1_1app_1_1WebotsApp.html" title="Implements the abstract App class using Webots." alt="" coords="156,5,307,32"/>
+</map>

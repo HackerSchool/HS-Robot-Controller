@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classhs_1_1behaviour_1_1Behaviour.html" title="Class used to represent abstract robot behaviours." alt="" coords="5,31,189,57"/>
+<area shape="rect" id="node2" href="$classhs_1_1behaviour_1_1LineFollower.html" title="Line following robot behaviour." alt="" coords="237,5,437,32"/>
+<area shape="rect" id="node3" href="$classhs_1_1behaviour_1_1Manual.html" title="Robot behaviour used for manual control." alt="" coords="254,56,421,83"/>
+</map>

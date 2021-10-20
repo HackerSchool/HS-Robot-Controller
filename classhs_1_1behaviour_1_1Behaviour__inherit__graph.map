@@ -1,0 +1,5 @@
+<map id="hs::behaviour::Behaviour" name="hs::behaviour::Behaviour">
+<area shape="rect" id="node1" title="Class used to represent abstract robot behaviours." alt="" coords="116,5,300,32"/>
+<area shape="rect" id="node2" href="$classhs_1_1behaviour_1_1LineFollower.html" title="Line following robot behaviour." alt="" coords="5,80,205,107"/>
+<area shape="rect" id="node3" href="$classhs_1_1behaviour_1_1Manual.html" title="Robot behaviour used for manual control." alt="" coords="229,80,395,107"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="hs::app::App" name="hs::app::App">
+<area shape="rect" id="node1" title="Class used to represent controller user input." alt="" coords="29,5,132,32"/>
+<area shape="rect" id="node2" href="$classhs_1_1app_1_1WebotsApp.html" title="Implements the abstract App class using Webots." alt="" coords="5,80,156,107"/>
+</map>
