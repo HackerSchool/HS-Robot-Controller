@@ -17,9 +17,15 @@ set(SOURCES
     "src/behaviour/behaviour.cpp"
     "src/behaviour/manager.hpp"
     "src/behaviour/manager.cpp"
+    "src/behaviour/manual.hpp"
+    "src/behaviour/manual.cpp"
+    "src/behaviour/line_follower.hpp"
+    "src/behaviour/line_follower.cpp"
 
     "src/app/app.hpp"
     "src/app/app.cpp"
+    "src/app/webots_app.hpp"
+    "src/app/webots_app.cpp"
 )
 
 add_executable(controller ${SOURCES})

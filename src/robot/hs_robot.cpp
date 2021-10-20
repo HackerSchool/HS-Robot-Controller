@@ -12,7 +12,7 @@ HSRobot::~HSRobot()
     // TODO
 }
 
-void HSRobot::setMovement(double translation, double rotation)
+void HSRobot::setMovement(double rotation, double translation)
 {
     // TODO
 }
@@ -27,12 +27,22 @@ void HSRobot::setCameraAngle(double angle)
     // TODO
 }
 
-double HSRobot::readSensor(Sensor sensor)
+double HSRobot::readSensor(Sensor sensor) const
 {
     return 0.0; // TODO
 }
 
-cv::Mat HSRobot::readCamera()
+cv::Mat HSRobot::readCamera() const
 {
     return cv::Mat(); // TODO
+}
+
+bool HSRobot::shouldStop() const
+{
+    // TODO
+}
+
+void HSRobot::update()
+{
+    // TODO
 }

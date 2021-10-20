@@ -65,13 +65,13 @@ void WebotsRobot::setCameraAngle(double angle)
     this->cameraAngle = angle;
 }
 
-double WebotsRobot::readSensor(Sensor sensor)
+double WebotsRobot::readSensor(Sensor sensor) const
 {
     return wb_distance_sensor_get_value(this->sensors[static_cast<int>(sensor)]) /
            wb_distance_sensor_get_max_value(this->sensors[static_cast<int>(sensor)]);
 }
 
-cv::Mat WebotsRobot::readCamera()
+cv::Mat WebotsRobot::readCamera() const
 {
     int width = wb_camera_get_width(this->camera);
     int height = wb_camera_get_height(this->camera);
@@ -79,7 +79,7 @@ cv::Mat WebotsRobot::readCamera()
     return cv::Mat(height, width, CV_8UC4, (unsigned char*)buf);
 }
 
-bool WebotsRobot::shouldStop()
+bool WebotsRobot::shouldStop() const
 {
     return this->shouldStopFlag;
 }
@@ -143,36 +143,38 @@ void WebotsRobot::setMotor(Motor motor, double velocity)
 {
     if (motor == Motor::WheelRF || motor == Motor::WheelsR || motor == Motor::WheelsF || motor == Motor::Wheels)
         wb_motor_set_velocity(this->motors[static_cast<int>(Motor::WheelRF)], velocity * WebotsRobot::WHEEL_VEL_MUL);
-    else if (motor == Motor::WheelLF || motor == Motor::WheelsL || motor == Motor::WheelsF || motor == Motor::Wheels)
+    if (motor == Motor::WheelLF || motor == Motor::WheelsL || motor == Motor::WheelsF || motor == Motor::Wheels)
         wb_motor_set_velocity(this->motors[static_cast<int>(Motor::WheelLF)], velocity * WebotsRobot::WHEEL_VEL_MUL);
-    else if (motor == Motor::WheelRM || motor == Motor::WheelsR || motor == Motor::WheelsM || motor == Motor::Wheels)
+    if (motor == Motor::WheelRM || motor == Motor::WheelsR || motor == Motor::WheelsM || motor == Motor::Wheels)
         wb_motor_set_velocity(this->motors[static_cast<int>(Motor::WheelRM)], velocity * WebotsRobot::WHEEL_VEL_MUL);
-    else if (motor == Motor::WheelLM || motor == Motor::WheelsL || motor == Motor::WheelsM || motor == Motor::Wheels)
+    if (motor == Motor::WheelLM || motor == Motor::WheelsL || motor == Motor::WheelsM || motor == Motor::Wheels)
         wb_motor_set_velocity(this->motors[static_cast<int>(Motor::WheelLM)], velocity * WebotsRobot::WHEEL_VEL_MUL);
-    else if (motor == Motor::WheelRB || motor == Motor::WheelsR || motor == Motor::WheelsB || motor == Motor::Wheels)
+    if (motor == Motor::WheelRB || motor == Motor::WheelsR || motor == Motor::WheelsB || motor == Motor::Wheels)
         wb_motor_set_velocity(this->motors[static_cast<int>(Motor::WheelRB)], velocity * WebotsRobot::WHEEL_VEL_MUL);
-    else if (motor == Motor::WheelLB || motor == Motor::WheelsL || motor == Motor::WheelsB || motor == Motor::Wheels)
+    if (motor == Motor::WheelLB || motor == Motor::WheelsL || motor == Motor::WheelsB || motor == Motor::Wheels)
         wb_motor_set_velocity(this->motors[static_cast<int>(Motor::WheelLB)], velocity * WebotsRobot::WHEEL_VEL_MUL);
-    else
+    if (static_cast<int>(motor) > static_cast<int>(Motor::WheelLB) &&
+        static_cast<int>(motor) < static_cast<int>(Motor::Count))
         wb_motor_set_velocity(this->motors[static_cast<int>(motor)], velocity);
 }
 
 void WebotsRobot::setServo(Servo servo, double position)
 {
     if (servo == Servo::WheelRF || servo == Servo::WheelsR || servo == Servo::WheelsF || servo == Servo::Wheels)
-        wb_motor_set_position(this->motors[static_cast<int>(Servo::WheelRF)], position * WebotsRobot::WHEEL_POS_MUL);
-    else if (servo == Servo::WheelLF || servo == Servo::WheelsL || servo == Servo::WheelsF || servo == Servo::Wheels)
-        wb_motor_set_position(this->motors[static_cast<int>(Servo::WheelLF)], position * WebotsRobot::WHEEL_POS_MUL);
-    else if (servo == Servo::WheelRM || servo == Servo::WheelsR || servo == Servo::WheelsM || servo == Servo::Wheels)
-        wb_motor_set_position(this->motors[static_cast<int>(Servo::WheelRM)], position * WebotsRobot::WHEEL_POS_MUL);
-    else if (servo == Servo::WheelLM || servo == Servo::WheelsL || servo == Servo::WheelsM || servo == Servo::Wheels)
-        wb_motor_set_position(this->motors[static_cast<int>(Servo::WheelLM)], position * WebotsRobot::WHEEL_POS_MUL);
-    else if (servo == Servo::WheelRB || servo == Servo::WheelsR || servo == Servo::WheelsB || servo == Servo::Wheels)
-        wb_motor_set_position(this->motors[static_cast<int>(Servo::WheelRB)], position * WebotsRobot::WHEEL_POS_MUL);
-    else if (servo == Servo::WheelLB || servo == Servo::WheelsL || servo == Servo::WheelsB || servo == Servo::Wheels)
-        wb_motor_set_position(this->motors[static_cast<int>(Servo::WheelLB)], position * WebotsRobot::WHEEL_POS_MUL);
-    else
-        wb_motor_set_position(this->motors[static_cast<int>(servo)], position);
+        wb_motor_set_position(this->servos[static_cast<int>(Servo::WheelRF)], position * WebotsRobot::WHEEL_POS_MUL);
+    if (servo == Servo::WheelLF || servo == Servo::WheelsL || servo == Servo::WheelsF || servo == Servo::Wheels)
+        wb_motor_set_position(this->servos[static_cast<int>(Servo::WheelLF)], position * WebotsRobot::WHEEL_POS_MUL);
+    if (servo == Servo::WheelRM || servo == Servo::WheelsR || servo == Servo::WheelsM || servo == Servo::Wheels)
+        wb_motor_set_position(this->servos[static_cast<int>(Servo::WheelRM)], position * WebotsRobot::WHEEL_POS_MUL);
+    if (servo == Servo::WheelLM || servo == Servo::WheelsL || servo == Servo::WheelsM || servo == Servo::Wheels)
+        wb_motor_set_position(this->servos[static_cast<int>(Servo::WheelLM)], position * WebotsRobot::WHEEL_POS_MUL);
+    if (servo == Servo::WheelRB || servo == Servo::WheelsR || servo == Servo::WheelsB || servo == Servo::Wheels)
+        wb_motor_set_position(this->servos[static_cast<int>(Servo::WheelRB)], position * WebotsRobot::WHEEL_POS_MUL);
+    if (servo == Servo::WheelLB || servo == Servo::WheelsL || servo == Servo::WheelsB || servo == Servo::Wheels)
+        wb_motor_set_position(this->servos[static_cast<int>(Servo::WheelLB)], position * WebotsRobot::WHEEL_POS_MUL);
+    if (static_cast<int>(servo) > static_cast<int>(Servo::WheelLB) &&
+        static_cast<int>(servo) < static_cast<int>(Servo::Count))
+        wb_motor_set_position(this->servos[static_cast<int>(servo)], position);
 }
 
 #else
@@ -204,17 +206,17 @@ void WebotsRobot::setCameraAngle(double angle)
     abort(); // Unsupported operation
 }
 
-double WebotsRobot::readSensor(Sensor sensor)
+double WebotsRobot::readSensor(Sensor sensor) const
 {
     abort(); // Unsupported operation
 }
 
-cv::Mat WebotsRobot::readCamera()
+cv::Mat WebotsRobot::readCamera() const
 {
     abort(); // Unsupported operation
 }
 
-bool WebotsRobot::shouldStop()
+bool WebotsRobot::shouldStop() const
 {
     abort(); // Unsupported operation
 }

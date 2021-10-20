@@ -41,15 +41,15 @@ namespace hs::robot
         /// Returns the value read by a sensor.
         /// @param sensor The sensor which will be read.
         /// @returns Value read.
-        virtual double readSensor(Sensor sensor) = 0;
+        virtual double readSensor(Sensor sensor) const = 0;
 
         /// Gets the last image captured by the robot camera.
         /// @return Captured image.
-        virtual cv::Mat readCamera() = 0;
+        virtual cv::Mat readCamera() const = 0;
 
         /// Should the controller shut down?
         /// @return True or false.
-        virtual bool shouldStop() = 0;
+        virtual bool shouldStop() const = 0;
 
         /// Updates the robot's motors, servos, sensors and captures a image. Should be called on a loop.
         virtual void update() = 0;

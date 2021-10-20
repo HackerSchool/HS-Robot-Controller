@@ -20,6 +20,7 @@ namespace hs::robot
     class WebotsRobot : public Robot
     {
     public:
+        /// @param timeStep Webots update time step.
         WebotsRobot(int timeStep = 64);
         virtual ~WebotsRobot() override;
 
@@ -27,9 +28,9 @@ namespace hs::robot
         virtual void setMovement(double rotation, double translation) override;
         virtual void setArmPosition(double x, double y, double z) override;
         virtual void setCameraAngle(double angle) override;
-        virtual double readSensor(Sensor sensor) override;
-        virtual cv::Mat readCamera() override;
-        virtual bool shouldStop() override;
+        virtual double readSensor(Sensor sensor) const override;
+        virtual cv::Mat readCamera() const override;
+        virtual bool shouldStop() const override;
         virtual void update() override;
 
     private:

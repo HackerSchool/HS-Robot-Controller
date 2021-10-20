@@ -13,11 +13,13 @@ namespace hs::robot
         virtual ~HSRobot() override;
 
         // Abstract methods implementation
-        virtual void setMovement(double translation, double rotation) override;
+        virtual void setMovement(double rotation, double translation) override;
         virtual void setArmPosition(double x, double y, double z) override;
         virtual void setCameraAngle(double angle) override;
-        virtual double readSensor(Sensor sensor) override;
-        virtual cv::Mat readCamera() override;
+        virtual double readSensor(Sensor sensor) const override;
+        virtual cv::Mat readCamera() const override;
+        virtual bool shouldStop() const override;
+        virtual void update() override;
     };
 } // namespace hs::robot
 
