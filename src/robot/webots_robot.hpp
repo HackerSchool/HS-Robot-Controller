@@ -113,7 +113,7 @@ namespace hs::robot
         static inline const char* CAMERA_DEVICE = "camera";
 
         /// Webots wheel motor velocity multiplier.
-        static inline const double WHEEL_VEL_MUL = 5.0;
+        static inline const double WHEEL_VEL_MUL = 1.0;
 
         /// Webots wheel servo position multiplier.
         static inline const double WHEEL_POS_MUL = 0.87;

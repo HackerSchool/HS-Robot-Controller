@@ -24,9 +24,9 @@ namespace hs::robot
         virtual ~Robot() = default;
 
         /// Sets the robot's movement. The values passed to this function correspond to the joystick X and Y axes.
-        /// @param translation Forward (positive) and backwards (negative) movement.
         /// @param rotation    How should the robot turn, left (negative) or right (positive).
-        virtual void setMovement(double translation, double rotation) = 0;
+        /// @param translation Forward (positive) and backwards (negative) movement.
+        virtual void setMovement(double rotation, double translation) = 0;
 
         /// Sets the desired robot's arm position.
         /// @param x First DOF angle.

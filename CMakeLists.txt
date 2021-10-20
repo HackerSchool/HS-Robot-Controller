@@ -3,6 +3,7 @@ project(HSRobot LANGUAGES CXX)
 
 option(USE_WEBOTS ON)
 option(USE_BLUETOOTH OFF)
+option(SHOW_OPENCV_WINDOWS ON)
 
 set(SOURCES
 	"src/main.cpp"
@@ -30,6 +31,9 @@ set(SOURCES
 
 add_executable(controller ${SOURCES})
 set_property(TARGET controller PROPERTY CXX_STANDARD 17)
+if(SHOW_OPENCV_WINDOWS)
+    target_compile_definitions(controller PUBLIC SHOW_OPENCV_WINDOWS)
+endif()
 
 # Link OpenCV
 find_package(OpenCV REQUIRED)

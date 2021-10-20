@@ -1,4 +1,5 @@
 #include <iostream>
+#include <opencv2/opencv.hpp>
 
 #include "robot/webots_robot.hpp"
 
@@ -34,6 +35,10 @@ int main()
         robot->update();
         app->update();
         manager->update();
+
+#ifdef SHOW_OPENCV_WINDOWS
+        cv::waitKey(1); // Handle OpenCV events, required for showing OpenCV windows
+#endif // SHOW_OPENCV_WINDOWS
     }
 
     delete app;
