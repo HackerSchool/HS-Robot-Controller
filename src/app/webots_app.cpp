@@ -89,6 +89,11 @@ void WebotsApp::update()
 
 #else
 
+WebotsApp::WebotsApp(const robot::Robot& robot, behaviour::Manager& manager, int timeStep) : App(robot, manager)
+{
+    abort(); // Unsupported operation
+}
+
 double WebotsApp::getJoystickX() const
 {
     abort(); // Unsupported operation

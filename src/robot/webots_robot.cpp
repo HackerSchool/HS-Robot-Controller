@@ -181,7 +181,7 @@ void WebotsRobot::setServo(Servo servo, double position)
 
 // The controller was built without Webots support, provide empty implementation
 
-WebotsRobot::WebotsRobot()
+WebotsRobot::WebotsRobot(int timeStep)
 {
     abort(); // Unsupported operation
 }

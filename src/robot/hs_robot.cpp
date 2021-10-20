@@ -39,7 +39,7 @@ cv::Mat HSRobot::readCamera() const
 
 bool HSRobot::shouldStop() const
 {
-    // TODO
+    return true; // TODO
 }
 
 void HSRobot::update()
