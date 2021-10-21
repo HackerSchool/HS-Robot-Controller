@@ -16,6 +16,11 @@ Manager::~Manager()
         delete b.second;
 }
 
+void Manager::reset()
+{
+    this->behaviour->reset();
+}
+
 void Manager::update()
 {
     this->behaviour->update();

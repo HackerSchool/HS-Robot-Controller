@@ -27,30 +27,28 @@ void LineFollower::update()
     // Get the rectangles
     float max_area = 0;
     cv::Point verts[4];
-    for (size_t i = 0; i < contours.size(); i++) {
+    for (size_t i = 0; i < contours.size(); i++)
+    {
         auto rect = cv::minAreaRect(contours[i]);
-        if (max_area < rect.size.area()) {
+        if (max_area < rect.size.area())
+        {
             max_area = rect.size.area();
             cv::Point2f verts2f[4];
             rect.points(verts2f);
-            for (int i = 0; i < 4; ++i) {
+            for (int i = 0; i < 4; ++i)
+            {
                 verts[i] = verts2f[i];
             }
         }
     }
 
     // Only process if the rectangle is large enough
-    if (max_area > 1000.0f) {
+    if (max_area > 1000.0f)
+    {
         // Get center lines
-        cv::Point line1[2] = {
-            (verts[0] + verts[3]) / 2.0f,
-            (verts[1] + verts[2]) / 2.0f
-        };
+        cv::Point line1[2] = {(verts[0] + verts[3]) / 2.0f, (verts[1] + verts[2]) / 2.0f};
 
-        cv::Point line2[2] = {
-            (verts[0] + verts[1]) / 2.0f,
-            (verts[2] + verts[3]) / 2.0f
-        };
+        cv::Point line2[2] = {(verts[0] + verts[1]) / 2.0f, (verts[2] + verts[3]) / 2.0f};
 
         cv::Vec2f dir1 = cv::Vec2f(line1[1].x - line1[0].x, line1[1].y - line1[0].y) * 0.02f;
         cv::Vec2f dir2 = cv::Vec2f(line2[0].x - line2[1].x, line2[0].y - line2[1].y) * 0.02f;
@@ -58,19 +56,21 @@ void LineFollower::update()
         cv::Vec2f dir;
         float deviation;
 
-        if (dir1.dot(dir1) > dir2.dot(dir2)) {
+        if (dir1.dot(dir1) > dir2.dot(dir2))
+        {
 #ifdef SHOW_OPENCV_WINDOWS
             cv::line(cut, line1[0], line1[1], cv::Scalar(0, 0, 255), 2);
 #endif // SHOW_OPENCV_WINDOWS
             center = cv::Vec2f(line1[0].x + line1[1].x, line1[0].y + line1[1].y) * 0.5f;
-            dir = dir1;
+            dir    = dir1;
         }
-        else {
+        else
+        {
 #ifdef SHOW_OPENCV_WINDOWS
             cv::line(cut, line2[0], line2[1], cv::Scalar(0, 0, 255), 2);
 #endif // SHOW_OPENCV_WINDOWS
             center = cv::Vec2f(line2[0].x + line2[1].x, line2[0].y + line2[1].y) * 0.5f;
-            dir = dir2;
+            dir    = dir2;
         }
 
         // Calculate deviation

@@ -11,10 +11,10 @@ using namespace hs::app;
 
 WebotsApp::WebotsApp(const robot::Robot& robot, behaviour::Manager& manager, int timeStep) : App(robot, manager)
 {
-    this->joystickX = 0.0;
-    this->joystickY = 0.0;
+    this->joystickX   = 0.0;
+    this->joystickY   = 0.0;
     this->cameraAngle = 0.0;
-    this->timeStep = timeStep;
+    this->timeStep    = timeStep;
 
     wb_keyboard_enable(this->timeStep);
 }

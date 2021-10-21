@@ -20,7 +20,7 @@ namespace hs::robot
     class Robot
     {
     public:
-        Robot() = default;
+        Robot()          = default;
         virtual ~Robot() = default;
 
         /// Sets the robot's movement. The values passed to this function correspond to the joystick X and Y axes.

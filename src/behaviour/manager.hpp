@@ -27,6 +27,9 @@ namespace hs::behaviour
         /// @tparam T Behaviour type.
         template <typename T> void set();
 
+        /// Resets the current behaviour.
+        void reset();
+
         /// Updates the current behaviour.
         void update();
 
@@ -48,7 +51,6 @@ namespace hs::behaviour
     template <typename T> void Manager::set()
     {
         this->behaviour = this->behaviours[T::NAME];
-        this->behaviour->reset();
     }
 
 } // namespace hs::behaviour
