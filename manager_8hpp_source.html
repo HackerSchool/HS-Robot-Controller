@@ -105,40 +105,41 @@ $(document).ready(function(){initNavTree('manager_8hpp_source.html',''); initRes
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keywordtype">void</span> <a class="code" href="classhs_1_1behaviour_1_1Manager.html#ad6f32ec138017cc0af86ab834303577c">set</a>();</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classhs_1_1behaviour_1_1Manager.html#af43da42550bd9746c5ea61a6aeee80de">update</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classhs_1_1behaviour_1_1Manager.html#a8cb433965677ad622ee43d59e24262e7">reset</a>();</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="classhs_1_1robot_1_1Robot.html">robot::Robot</a>&amp; robot; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classhs_1_1behaviour_1_1Manager.html#af43da42550bd9746c5ea61a6aeee80de">update</a>();</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        std::map&lt;const char*, Behaviour*&gt; behaviours; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="classhs_1_1behaviour_1_1Behaviour.html">Behaviour</a>* behaviour;                         </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    };</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">// Template methods implementation</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classhs_1_1behaviour_1_1Manager.html#a62227a4235cb200c06d64b32c983e874">   42</a></span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... TArgs&gt; <span class="keywordtype">void</span> <a class="code" href="classhs_1_1behaviour_1_1Manager.html#a62227a4235cb200c06d64b32c983e874">Manager::registerType</a>(TArgs... args)</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">if</span> (this-&gt;behaviours.find(T::NAME) == this-&gt;behaviours.end())</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            this-&gt;behaviours[T::NAME] = <span class="keyword">new</span> T(this-&gt;robot, args...);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classhs_1_1behaviour_1_1Manager.html#ad6f32ec138017cc0af86ab834303577c">   48</a></span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keywordtype">void</span> <a class="code" href="classhs_1_1behaviour_1_1Manager.html#ad6f32ec138017cc0af86ab834303577c">Manager::set</a>()</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        this-&gt;behaviour = this-&gt;behaviours[T::NAME];</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        this-&gt;behaviour-&gt;<a class="code" href="classhs_1_1behaviour_1_1Behaviour.html#a12fd1fb8fe4b7571a548ee1e81ce6a4d">reset</a>();</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;} <span class="comment">// namespace hs::behaviour</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="classhs_1_1robot_1_1Robot.html">robot::Robot</a>&amp; robot; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        std::map&lt;const char*, Behaviour*&gt; behaviours; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="classhs_1_1behaviour_1_1Behaviour.html">Behaviour</a>* behaviour;                         </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    };</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">// Template methods implementation</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classhs_1_1behaviour_1_1Manager.html#a62227a4235cb200c06d64b32c983e874">   45</a></span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... TArgs&gt; <span class="keywordtype">void</span> <a class="code" href="classhs_1_1behaviour_1_1Manager.html#a62227a4235cb200c06d64b32c983e874">Manager::registerType</a>(TArgs... args)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">if</span> (this-&gt;behaviours.find(T::NAME) == this-&gt;behaviours.end())</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            this-&gt;behaviours[T::NAME] = <span class="keyword">new</span> T(this-&gt;robot, args...);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classhs_1_1behaviour_1_1Manager.html#ad6f32ec138017cc0af86ab834303577c">   51</a></span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keywordtype">void</span> <a class="code" href="classhs_1_1behaviour_1_1Manager.html#ad6f32ec138017cc0af86ab834303577c">Manager::set</a>()</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        this-&gt;behaviour = this-&gt;behaviours[T::NAME];</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif // HS_BEHAVIOUR_MANAGER_HPP</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;} <span class="comment">// namespace hs::behaviour</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#endif // HS_BEHAVIOUR_MANAGER_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclasshs_1_1behaviour_1_1Manager_html_af43da42550bd9746c5ea61a6aeee80de"><div class="ttname"><a href="classhs_1_1behaviour_1_1Manager.html#af43da42550bd9746c5ea61a6aeee80de">hs::behaviour::Manager::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">Updates the current behaviour.</div><div class="ttdef"><b>Definition:</b> manager.cpp:19</div></div>
+<div class="ttc" id="aclasshs_1_1behaviour_1_1Manager_html_af43da42550bd9746c5ea61a6aeee80de"><div class="ttname"><a href="classhs_1_1behaviour_1_1Manager.html#af43da42550bd9746c5ea61a6aeee80de">hs::behaviour::Manager::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">Updates the current behaviour.</div><div class="ttdef"><b>Definition:</b> manager.cpp:24</div></div>
 <div class="ttc" id="aclasshs_1_1behaviour_1_1Manager_html_a3f1d1d497e96a644eaae0bb5c2f3a288"><div class="ttname"><a href="classhs_1_1behaviour_1_1Manager.html#a3f1d1d497e96a644eaae0bb5c2f3a288">hs::behaviour::Manager::Manager</a></div><div class="ttdeci">Manager(robot::Robot &amp;robot)</div><div class="ttdef"><b>Definition:</b> manager.cpp:6</div></div>
-<div class="ttc" id="aclasshs_1_1behaviour_1_1Manager_html_ad6f32ec138017cc0af86ab834303577c"><div class="ttname"><a href="classhs_1_1behaviour_1_1Manager.html#ad6f32ec138017cc0af86ab834303577c">hs::behaviour::Manager::set</a></div><div class="ttdeci">void set()</div><div class="ttdoc">Switches to another behaviour.</div><div class="ttdef"><b>Definition:</b> manager.hpp:48</div></div>
+<div class="ttc" id="aclasshs_1_1behaviour_1_1Manager_html_ad6f32ec138017cc0af86ab834303577c"><div class="ttname"><a href="classhs_1_1behaviour_1_1Manager.html#ad6f32ec138017cc0af86ab834303577c">hs::behaviour::Manager::set</a></div><div class="ttdeci">void set()</div><div class="ttdoc">Switches to another behaviour.</div><div class="ttdef"><b>Definition:</b> manager.hpp:51</div></div>
 <div class="ttc" id="aclasshs_1_1behaviour_1_1Manager_html"><div class="ttname"><a href="classhs_1_1behaviour_1_1Manager.html">hs::behaviour::Manager</a></div><div class="ttdoc">Class used to control robot behaviours.</div><div class="ttdef"><b>Definition:</b> manager.hpp:12</div></div>
-<div class="ttc" id="aclasshs_1_1behaviour_1_1Manager_html_a62227a4235cb200c06d64b32c983e874"><div class="ttname"><a href="classhs_1_1behaviour_1_1Manager.html#a62227a4235cb200c06d64b32c983e874">hs::behaviour::Manager::registerType</a></div><div class="ttdeci">void registerType(TArgs... args)</div><div class="ttdoc">Registers a behaviour type.</div><div class="ttdef"><b>Definition:</b> manager.hpp:42</div></div>
-<div class="ttc" id="aclasshs_1_1behaviour_1_1Behaviour_html_a12fd1fb8fe4b7571a548ee1e81ce6a4d"><div class="ttname"><a href="classhs_1_1behaviour_1_1Behaviour.html#a12fd1fb8fe4b7571a548ee1e81ce6a4d">hs::behaviour::Behaviour::reset</a></div><div class="ttdeci">virtual void reset()</div><div class="ttdoc">Resets the behaviour to its original state.</div><div class="ttdef"><b>Definition:</b> behaviour.cpp:10</div></div>
+<div class="ttc" id="aclasshs_1_1behaviour_1_1Manager_html_a8cb433965677ad622ee43d59e24262e7"><div class="ttname"><a href="classhs_1_1behaviour_1_1Manager.html#a8cb433965677ad622ee43d59e24262e7">hs::behaviour::Manager::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdoc">Resets the current behaviour.</div><div class="ttdef"><b>Definition:</b> manager.cpp:19</div></div>
+<div class="ttc" id="aclasshs_1_1behaviour_1_1Manager_html_a62227a4235cb200c06d64b32c983e874"><div class="ttname"><a href="classhs_1_1behaviour_1_1Manager.html#a62227a4235cb200c06d64b32c983e874">hs::behaviour::Manager::registerType</a></div><div class="ttdeci">void registerType(TArgs... args)</div><div class="ttdoc">Registers a behaviour type.</div><div class="ttdef"><b>Definition:</b> manager.hpp:45</div></div>
 <div class="ttc" id="aclasshs_1_1robot_1_1Robot_html"><div class="ttname"><a href="classhs_1_1robot_1_1Robot.html">hs::robot::Robot</a></div><div class="ttdoc">Class used to control the robot.</div><div class="ttdef"><b>Definition:</b> robot.hpp:20</div></div>
 <div class="ttc" id="aclasshs_1_1behaviour_1_1Behaviour_html"><div class="ttname"><a href="classhs_1_1behaviour_1_1Behaviour.html">hs::behaviour::Behaviour</a></div><div class="ttdoc">Class used to represent abstract robot behaviours.</div><div class="ttdef"><b>Definition:</b> behaviour.hpp:14</div></div>
 <!-- start footer part -->
