@@ -29,6 +29,8 @@ if(NOT BUILD_ONLY_DOCS)
         "src/app/app.cpp"
         "src/app/webots_app.hpp"
         "src/app/webots_app.cpp"
+        "src/app/hs_app.hpp"
+        "src/app/hs_app.cpp"
     )
 
     add_executable(controller ${SOURCES})

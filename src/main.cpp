@@ -8,6 +8,7 @@
 #include "behaviour/line_follower.hpp"
 
 #include "app/webots_app.hpp"
+#include "app/hs_app.hpp"
 
 using namespace hs;
 using namespace hs::robot;
@@ -23,7 +24,7 @@ int main()
     Manager* manager = new Manager(*robot);
 
     // Setup app
-    App* app = new WebotsApp(*robot, *manager);
+    App* app = new HSApp(*robot, *manager);
 
     // Register behaviour types
     manager->registerType<Manual>(std::ref(*app));

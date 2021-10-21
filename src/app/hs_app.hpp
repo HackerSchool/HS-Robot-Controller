@@ -1,22 +1,18 @@
-#ifndef HS_APP_WEBOTS_APP_HPP
-#define HS_APP_WEBOTS_APP_HPP
+#ifndef HS_APP_HS_APP_HPP
+#define HS_APP_HS_APP_HPP
 
 #include "app.hpp"
 
-#ifdef USE_WEBOTS
-
-#endif // USE_WEBOTS
-
 namespace hs::app
 {
-    /// Implements the abstract App class using Webots.
-    class WebotsApp : public App
+    /// Implements the abstract App class using the real HS Robot application.
+    class HSApp : public App
     {
     public:
         /// @param robot   The robot which this app controls.
         /// @param manager The behaviour manager of the robot.
-        /// @param timeStep Webots update time step.
-        WebotsApp(const robot::Robot& robot, behaviour::Manager& manager, int timeStep = 64);
+        HSApp(const robot::Robot& robot, behaviour::Manager& manager);
+        virtual ~HSApp() override;
 
         // Abstract methods implementation
         virtual double getJoystickX() const override;
@@ -25,16 +21,22 @@ namespace hs::app
         virtual void update() override;
 
     private:
-#ifdef USE_WEBOTS
+#ifdef USE_BLUETOOTH
+
+        static inline const uint8_t RFCOMM_CHANNEL = 1; ///< RFCOMM channel.
+
+        /// Registers the SDP service so that it can be discovered by the client.
+        void registerSDPService();
+
+        int socket; ///< Listener socket.
+        int client; ///< Client socket.
 
         double joystickX;   ///< Last joystick X axis value.
         double joystickY;   ///< Last joystick Y axis value.
         double cameraAngle; ///< Target camera angle.
 
-        int timeStep; ///< Webots time step.
-
-#endif // USE_WEBOTS
+#endif // USE_BLUETOOTH
     };
 } // namespace hs::app
 
-#endif // HS_APP_WEBOTS_APP_HPP
+#endif // HS_APP_HS_APP_HPP
