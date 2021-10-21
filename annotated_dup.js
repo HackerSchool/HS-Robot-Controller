@@ -3,6 +3,7 @@ var annotated_dup =
     [ "hs", null, [
       [ "app", null, [
         [ "App", "classhs_1_1app_1_1App.html", "classhs_1_1app_1_1App" ],
+        [ "HSApp", "classhs_1_1app_1_1HSApp.html", "classhs_1_1app_1_1HSApp" ],
         [ "WebotsApp", "classhs_1_1app_1_1WebotsApp.html", "classhs_1_1app_1_1WebotsApp" ]
       ] ],
       [ "behaviour", null, [

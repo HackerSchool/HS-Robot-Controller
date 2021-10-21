@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "hs::app::App", "classhs_1_1app_1_1App.html", [
+      [ "hs::app::HSApp", "classhs_1_1app_1_1HSApp.html", null ],
       [ "hs::app::WebotsApp", "classhs_1_1app_1_1WebotsApp.html", null ]
     ] ],
     [ "hs::behaviour::Behaviour", "classhs_1_1behaviour_1_1Behaviour.html", [

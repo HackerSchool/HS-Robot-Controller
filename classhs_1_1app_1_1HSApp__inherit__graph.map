@@ -1,0 +1,4 @@
+<map id="hs::app::HSApp" name="hs::app::HSApp">
+<area shape="rect" id="node1" title="Implements the abstract App class using the real HS Robot application." alt="" coords="5,80,127,107"/>
+<area shape="rect" id="node2" href="$classhs_1_1app_1_1App.html" title="Class used to represent controller user input." alt="" coords="15,5,117,32"/>
+</map>
