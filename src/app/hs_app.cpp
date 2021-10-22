@@ -213,6 +213,11 @@ HSApp::HSApp(const robot::Robot& robot, behaviour::Manager& manager) : App(robot
     abort(); // Unsupported operation
 }
 
+HSApp::~HSApp()
+{
+    abort(); // Unsupported operation
+}
+
 double HSApp::getJoystickX() const
 {
     abort(); // Unsupported operation
